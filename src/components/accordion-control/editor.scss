@@ -1,0 +1,106 @@
+.maxi-accordion-control {
+	margin: 0px 0 1px;
+
+	&__item {
+		background: none;
+
+		.maxi-accordion-tab {
+			&:after {
+				content: '';
+				z-index: 1;
+				position: absolute;
+				width: 100%;
+				height: 1px;
+			}
+		}
+		.maxi-accordion-icon {
+			max-width: 24px;
+			max-height: 24px;
+		}
+
+		&__panel {
+			&:not(.maxi-accordion-control__item__panel--disable-padding) {
+				padding: 8px 8px 0;
+				background-color: #fff;
+			}
+		}
+
+		&:last-child {
+			.maxi-accordion-control__item__button {
+				border-bottom: 1px solid var(--maxi-grey-1-color);
+			}
+		}
+		&__button {
+			position: relative;
+			z-index: 2;
+			display: flex;
+			align-items: center;
+			padding: 8px;
+			border-top: 1px solid var(--maxi-grey-1-color);
+			margin-bottom: 0;
+			background: var(--maxi-white-2-color);
+
+			&:hover {
+				background: var(--maxi-grey-2-color);
+				cursor: pointer;
+			}
+			&:active,
+			&:focus {
+				background: var(--maxi-grey-3-color);
+			}
+			&:before {
+				margin-right: 8px;
+			}
+			&:after {
+				content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5.783 9.578"><path d="M5.783 4.758a.963.963 0 01-.283.684L1.651 9.295A.967.967 0 01.283 7.927l3.179-3.169L.293 1.59A.963.963 0 011.651.232L5.5 4.084a.963.963 0 01.283.674z" /></svg>');
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				width: 6px;
+				transform: translateY(-50%) rotate(0);
+				transform-origin: center;
+				transition: transform 0.3s linear;
+
+				@at-root .rtl #{&} {
+					right: unset;
+					left: 10px;
+				}
+			}
+			&[aria-expanded='true'] {
+				border-bottom: 1px solid var(--maxi-grey-1-color);
+				background: #fff;
+
+				&:after {
+					transform: translateY(-50%) rotate(90deg);
+				}
+			}
+		}
+		&--active {
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 10px;
+				height: 10px;
+				z-index: 1;
+				border-top: 2px solid var(--maxi-green-1-color);
+				border-left: 2px solid var(--maxi-green-1-color);
+			}
+		}
+	}
+	&--nested {
+		margin-bottom: 0;
+		.maxi-accordion-control__item {
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.maxi-accordion-control__item__button {
+			background: var(--maxi-white-4-color);
+			&:hover {
+				background: var(--maxi-white-3-color);
+			}
+		}
+	}
+}

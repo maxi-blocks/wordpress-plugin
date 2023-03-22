@@ -1,0 +1,19 @@
+.maxi-container-block {
+	margin: auto;
+
+	.block-list-appender--show {
+		.block-editor-button-block-appender {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+	&__container {
+		width: 100%;
+	}
+}
+
+body.maxi-blocks--active .maxi-container-block {
+	&.wp-block.maxi-block.maxi-block--backend {
+		margin: 0 auto;
+	}
+}

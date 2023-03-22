@@ -1,0 +1,15 @@
+body.maxi-blocks--active .components-popover.maxi-popover-button {
+	.components-popover__content {
+		margin: auto;
+		overflow: hidden;
+		transform: translateY(100%);
+	}
+
+	&--open {
+		z-index: -1;
+	}
+
+	&--hidden {
+		display: none;
+	}
+}

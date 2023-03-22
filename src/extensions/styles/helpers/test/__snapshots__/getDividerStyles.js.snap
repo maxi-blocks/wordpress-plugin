@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getDividerStyles Get a correct divider styles 1`] = `
+Object {
+  "general": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-7,8,18,25),1))",
+    "border-right-style": "none",
+    "border-top-style": "dashed",
+    "border-top-width": "38px",
+    "height": "38px",
+    "width": "79%",
+  },
+  "l": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-4,255,74,23),0.56))",
+    "border-right-style": "solid",
+    "border-right-width": "14px",
+    "border-top-style": "none",
+    "height": "41%",
+    "width": "14px",
+  },
+  "label": "Divider",
+  "m": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-4,255,74,23),0.56))",
+    "border-right-style": "solid",
+    "border-right-width": "14px",
+    "border-top-style": "none",
+    "height": "41%",
+    "width": "14px",
+  },
+  "s": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-3,155,155,155),0.56))",
+    "border-right-style": "none",
+    "border-top-style": "solid",
+    "border-top-width": "149px",
+    "height": "149px",
+    "width": "23%",
+  },
+  "xl": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-7,8,18,25),1))",
+    "border-right-style": "none",
+    "border-top-style": "dashed",
+    "border-top-width": "38px",
+    "height": "38px",
+    "width": "79%",
+  },
+  "xs": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-3,155,155,155),0.56))",
+    "border-right-style": "none",
+    "border-top-style": "solid",
+    "border-top-width": "149px",
+    "height": "149px",
+    "width": "23%",
+  },
+  "xxl": Object {
+    "border-color": "var(--maxi-light-divider-color,rgba(var(--maxi-light-color-7,8,18,25),1))",
+    "border-right-style": "none",
+    "border-top-style": "dashed",
+    "border-top-width": "38px",
+    "height": "38px",
+    "width": "79%",
+  },
+}
+`;
+
+exports[`getDividerStyles Get a correct divider styles 2`] = `
+Object {
+  "general": Object {
+    "align-items": "flex-end",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+  },
+  "l": Object {
+    "align-items": "flex-start",
+    "flex-direction": "row",
+    "justify-content": "center",
+  },
+  "label": "Divider",
+  "m": Object {
+    "align-items": "flex-start",
+    "flex-direction": "row",
+    "justify-content": "center",
+  },
+  "s": Object {
+    "align-items": "center",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+  },
+  "xl": Object {
+    "align-items": "flex-end",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+  },
+  "xs": Object {
+    "align-items": "center",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+  },
+  "xxl": Object {
+    "align-items": "flex-end",
+    "flex-direction": "row",
+    "justify-content": "flex-start",
+  },
+}
+`;

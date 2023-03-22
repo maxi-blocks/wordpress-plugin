@@ -1,0 +1,20 @@
+body.maxi-blocks--active .maxi-svg-icon-block {
+	display: flex;
+
+	.maxi-svg-icon-block__icon {
+		display: flex;
+
+		svg {
+			position: relative;
+			z-index: 20;
+			display: block;
+			width: 100%;
+			margin: auto;
+			height: 100%;
+		}
+	}
+
+	.maxi-background-displayer {
+		z-index: 10;
+	}
+}

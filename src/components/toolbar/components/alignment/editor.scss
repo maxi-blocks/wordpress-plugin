@@ -1,0 +1,21 @@
+.maxi-dropdown__alignment-content {
+	z-index: 99999999;
+	margin: -33px 0 0 120px !important;
+
+	.components-popover__content {
+		width: 75px;
+	}
+	.maxi-alignment-control {
+		.maxi-base-control__field {
+			margin-bottom: 0;
+			.maxi-tabs-control {
+				display: block !important;
+				margin-bottom: 0;
+				&__button {
+					display: block;
+					align-items: flex-start;
+				}
+			}
+		}
+	}
+}

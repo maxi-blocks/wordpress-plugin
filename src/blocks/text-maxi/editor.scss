@@ -1,0 +1,32 @@
+.maxi-text-block {
+	&__content {
+		outline: 1.5px dashed var(--maxi-light-blue-3-color) !important;
+
+		a.maxi-text-block--link {
+			text-decoration-skip-ink: auto;
+
+			&:visited,
+			&:visited span {
+				color: inherit !important;
+			}
+		}
+	}
+	&__has-text {
+		&:hover {
+			.maxi-text-block__content {
+				outline: 1.5px dashed var(--maxi-grey-7-color) !important;
+			}
+		}
+		&.is-selected {
+			.maxi-text-block__content {
+				outline: 1.5px dashed var(--maxi-light-blue-3-color) !important;
+			}
+		}
+		.maxi-text-block__content {
+			outline: 1.5px dashed transparent !important;
+		}
+	}
+	&::after {
+		display: none;
+	}
+}

@@ -1,0 +1,45 @@
+.maxi-toolbar-layout {
+	&__button {
+		display: flex;
+		align-items: center;
+		font-family: Roboto, sans-serif;
+		font-size: 14px;
+		letter-spacing: 0.5px;
+		color: #081219;
+		background-color: #fff;
+		margin-left: 10px;
+		border-radius: 3px;
+		float: right;
+		border: 2px solid #dddfe2;
+		box-shadow: none !important;
+		padding: 5px 10px;
+		justify-content: center;
+		min-height: 45px;
+		transition: all 0.5s;
+
+		&[aria-pressed='true'],
+		&:hover {
+			border-color: #ff4a17;
+		}
+	}
+}
+
+body.maxi-blocks--active .edit-post-header-toolbar {
+	flex-grow: 0;
+}
+
+//FSE
+.edit-site {
+	.edit-site-site-hub {
+		z-index: 4;
+	}
+	.edit-site-layout__header {
+		z-index: 3;
+	}
+	.maxi-toolbar-layout__button {
+		position: absolute;
+		left: 15%;
+		top: 7px;
+		margin-left: 0;
+	}
+}

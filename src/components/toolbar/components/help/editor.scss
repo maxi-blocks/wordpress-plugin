@@ -1,0 +1,10 @@
+.toolbar-item {
+	&__help {
+		width: auto !important;
+
+		.components-button {
+			padding-left: 8px !important;
+			padding-right: 8px !important;
+		}
+	}
+}

@@ -1,0 +1,141 @@
+/********
+* This styles should provide not just a base for all Maxi Block blocks,
+* it has the objective to remove other theme/plugins styles that can affect them
+********/
+
+.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > * + *,
+.editor-styles-wrapper
+	.block-editor-block-list__layout.is-root-container
+	> *
+	+ .maxi-block {
+	margin-top: 0;
+}
+
+body.maxi-blocks--active .maxi-block {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	/* max-width: none; */ /* Not sure if it can create and interfere with theme styles */
+	width: 100%;
+	min-width: initial;
+	max-height: none;
+	height: initial;
+	min-height: initial;
+	border: none;
+	border-width: 0;
+	border-radius: 0;
+	outline: none;
+	vertical-align: inherit;
+	background: none;
+	box-shadow: none;
+	text-shadow: inherit;
+	transition: none;
+	line-height: 1;
+	box-sizing: border-box;
+
+	*:not(.maxi-background-displayer) {
+		box-sizing: border-box;
+	}
+
+	&.maxi-container-block .maxi-block {
+		max-width: none;
+	}
+
+	&.maxi-button-block .maxi-button-block__button {
+		background-color: transparent;
+	}
+
+	/*Seedlet theme overrides*/
+	.maxi-components-button {
+		&:focus,
+		span {
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+	.maxi-components-button {
+		&:after,
+		&:before {
+			content: none;
+		}
+	}
+
+	.maxi-text-block--link {
+		border: none;
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+body.maxi-blocks--active .maxi-block[data-align='full'] {
+	width: auto;
+}
+
+/*Fixes button hover border and underline for Twenty Twenty One & Twenty Twenty*/
+body.maxi-blocks--active .maxi-button-block__button {
+	border: none;
+	text-decoration: none;
+}
+
+/*Fixes container alignment for Twenty Nineteen*/
+body.maxi-blocks--active
+	.maxi-container-block.wp-block.maxi-block.maxi-block--backend {
+	left: auto;
+}
+
+/*Removes focus background for Twenty Twenty One*/
+body.maxi-blocks--active #content {
+	.maxi-button-block__button,
+	.maxi-text-block--link,
+	.maxi-link-wrapper {
+		&:focus {
+			text-decoration: none;
+		}
+	}
+}
+
+/*Removes image outline on link focus for Twenty Twenty One*/
+.maxi-link-wrapper:focus img {
+	outline: none !important;
+}
+
+/*Removes button focus outline for Twenty Twenty One*/
+body.maxi-blocks--active .maxi-button-block button:focus {
+	outline: none !important;
+}
+
+/*Removes anchor border for Twenty Twenty One and Twenty*/
+body.maxi-blocks--active .maxi-link-wrapper {
+	text-decoration: none;
+	outline: none;
+}
+
+/** Astra **/
+/*Block inserted position*/
+body.maxi-blocks--active #wpwrap .maxi-block-inserter__button {
+	margin: auto;
+}
+
+/*Block border radius*/
+body.maxi-blocks--active.ast-highlight-wpblock-onhover
+	.maxi-block--backend.block-editor-block-list__block {
+	&.is-highlighted,
+	&:hover {
+		border-radius: 0;
+	}
+}
+/*Overwrites Astra container for the Maxi full width template*/
+body.maxi-blocks--active.page-template-full-width-template .ast-container {
+	max-width: 100%;
+	padding: 0;
+
+	#maxi-main-container {
+		width: 100%;
+	}
+}
+
+body.maxi-blocks--active .is-reusable[data-contains-maxi-block='true'] {
+	min-width: 100%;
+	max-width: 100% !important;
+}

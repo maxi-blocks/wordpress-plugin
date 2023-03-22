@@ -1,0 +1,11 @@
+.toolbar-item__background {
+	&__popover {
+		min-width: 279px;
+	}
+
+	&-content {
+		.components-color-picker__swatch {
+			background-image: unset;
+		}
+	}
+}

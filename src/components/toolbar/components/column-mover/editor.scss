@@ -1,0 +1,27 @@
+.toolbar-item-move__horizontally {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 5px !important;
+
+	.components-button {
+		display: inline-block;
+		padding: 0;
+
+		&:first-child {
+			svg {
+				transform: rotate(-90deg);
+			}
+		}
+		&:last-child {
+			svg {
+				transform: rotate(90deg);
+			}
+		}
+		&:hover {
+			path {
+				fill: var(--maxi-secondary-color) !important;
+			}
+		}
+	}
+}

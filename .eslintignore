@@ -1,0 +1,14 @@
+**/*.min.js
+**/*.build.js
+**/node_modules/**
+build
+node_modules
+jest.config.js
+
+API
+css
+img
+src/includes
+# js
+src/extensions/text/fonts/font.js
+

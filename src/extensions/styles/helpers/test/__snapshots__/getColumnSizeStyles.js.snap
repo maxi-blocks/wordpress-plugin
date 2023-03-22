@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getColumnSizeStyles Get a correct column size styles 1`] = `
+Object {
+  "general": Object {
+    "flex-basis": "calc(1% - 0px)",
+    "width": "calc(1% - 0px)",
+  },
+  "l": Object {
+    "flex-basis": "calc(4% - 0px)",
+    "width": "calc(4% - 0px)",
+  },
+  "m": Object {
+    "flex-basis": "calc(1% - 0px)",
+    "width": "calc(1% - 0px)",
+  },
+  "s": Object {
+    "flex-basis": "calc(2% - 0px)",
+    "width": "calc(2% - 0px)",
+  },
+  "xl": Object {
+    "flex-basis": "calc(3% - 0px)",
+    "width": "calc(3% - 0px)",
+  },
+  "xs": Object {
+    "flex-basis": "calc(3% - 0px)",
+    "width": "calc(3% - 0px)",
+  },
+  "xxl": Object {
+    "flex-basis": "calc(2% - 0px)",
+    "width": "calc(2% - 0px)",
+  },
+}
+`;
+
+exports[`getColumnSizeStyles Get a correct column size styles with gap options 1`] = `
+Object {
+  "general": Object {
+    "flex-basis": "calc(1% - 1.6667%)",
+    "width": "calc(1% - 1.6667%)",
+  },
+  "l": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "m": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "s": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xl": Object {
+    "flex-basis": "calc(3% - 1.6667%)",
+    "width": "calc(3% - 1.6667%)",
+  },
+  "xs": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xxl": Object {
+    "flex-basis": "calc(2% - 1.6667px)",
+    "width": "calc(2% - 1.6667px)",
+  },
+}
+`;
+
+exports[`getColumnSizeStyles Get a correct column size styles with some fit-content 1`] = `
+Object {
+  "general": Object {
+    "flex-basis": "calc(1% - 0px)",
+    "width": "calc(1% - 0px)",
+  },
+  "l": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "m": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "s": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xl": Object {
+    "flex-basis": "calc(3% - 0px)",
+    "width": "calc(3% - 0px)",
+  },
+  "xs": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xxl": Object {
+    "flex-basis": "calc(2% - 0px)",
+    "width": "calc(2% - 0px)",
+  },
+}
+`;
+
+exports[`getColumnSizeStyles Get a correct column size styles with some fullwidth columns 1`] = `
+Object {
+  "general": Object {
+    "flex-basis": "100%",
+    "width": "100%",
+  },
+  "l": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "m": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "s": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xl": Object {
+    "flex-basis": "calc(3% - 0px)",
+    "width": "calc(3% - 0px)",
+  },
+  "xs": Object {
+    "flex-basis": "fit-content",
+    "width": "fit-content",
+  },
+  "xxl": Object {
+    "flex-basis": "calc(2% - 0px)",
+    "width": "calc(2% - 0px)",
+  },
+}
+`;

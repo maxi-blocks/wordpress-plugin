@@ -1,0 +1,57 @@
+/***********
+* Block card
+***********/
+.maxi-sidebar {
+	.block-editor-block-icon {
+		flex: 0;
+		height: 16px;
+		width: 16px;
+		margin: 0;
+
+		svg {
+			width: 16px;
+			height: 16px;
+			min-width: 16px;
+			min-height: 16px;
+			max-width: 16px;
+			max-height: 16px;
+		}
+	}
+	.block-editor-block-inspector.maxi-controls {
+		.block-editor-block-card {
+			position: relative;
+			padding: 8px;
+			color: #fff;
+			background: #fff;
+			letter-spacing: 0;
+
+			&__content {
+				margin: 0 0 0 8px;
+			}
+			&__title {
+				margin: 0 0 2px;
+				font-size: 14px;
+				font-weight: 500;
+				line-height: 14px;
+			}
+			&__description {
+				display: none;
+				width: 100%;
+				margin: 0;
+				position: relative;
+				left: -25px;
+				padding-top: 5px;
+			}
+		}
+	}
+}
+
+/*******************************
+* RTL
+*******************************/
+html[dir="rtl"]  {
+	.maxi-sidebar .block-editor-block-inspector.maxi-controls .block-editor-block-card__content {
+		margin-left: 0;
+		margin-right: 8px;
+	}
+}

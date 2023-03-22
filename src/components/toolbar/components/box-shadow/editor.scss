@@ -1,0 +1,65 @@
+.components-popover {
+	.toolbar-item__box-shadow__popover {
+		min-width: 305px;
+	}
+
+	.maxi-shadow-control {
+		display: flex;
+		flex-wrap: wrap;
+
+		&--disable {
+			.maxi-shadow-control__icon,
+			.maxi-advanced-number-control,
+			.maxi-color-control {
+				opacity: 0.3;
+				pointer-events: none;
+			}
+		}
+
+		.maxi-default-styles-control {
+			display: inline-block;
+			vertical-align: middle;
+			width: 181px;
+
+			&__button {
+				display: inline-block !important;
+				vertical-align: middle;
+
+				&:not(:first-child) {
+					padding: 0 5px;
+				}
+			}
+		}
+
+		&__icon {
+			display: flex;
+			margin-bottom: 8px;
+
+			svg {
+				margin: auto;
+			}
+		}
+
+		.maxi-color-control {
+			flex-basis: 100%;
+			width: 100%;
+
+			&__wrap {
+				.maxi-color-control__display {
+					width: 171px;
+				}
+			}
+
+			.maxi-opacity-control {
+				line-height: 100%;
+
+				input {
+					flex: 1;
+				}
+			}
+			& > .components-maxi-control__reset-button {
+				display: none;
+			}
+		}
+	}
+}

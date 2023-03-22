@@ -1,0 +1,12 @@
+# Ignore artifacts:
+**/*.min.js
+**/*.build.js
+**/node_modules/**
+build
+node_modules
+
+API
+/css
+img
+src/includes
+src/extensions/text/fonts/font.js

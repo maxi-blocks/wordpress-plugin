@@ -1,0 +1,10 @@
+.toolbar-item__columns-handler {
+	&[aria-pressed='true'] {
+		svg {
+			ellipse,
+			path {
+				fill: var(--maxi-primary-color) !important;
+			}
+		}
+	}
+}

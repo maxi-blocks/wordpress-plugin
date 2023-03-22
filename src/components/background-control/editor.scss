@@ -1,0 +1,122 @@
+.maxi-background-control {
+	.maxi-mediauploader-control {
+		&__image {
+			.maxi-mediauploader-control__remove {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.maxi-background-layer {
+		&__preview {
+			display: block;
+			width: 25px;
+			height: 25px;
+			margin: auto;
+			border: 1px solid var(--maxi-black-2-color);
+			opacity: 1;
+			float: left;
+			border-radius: 0;
+			margin-right: 5px;
+			background-size: cover !important;
+
+			svg {
+				display: block;
+				max-width: 21px;
+				max-height: 21px;
+				margin: auto;
+			}
+		}
+		&__row {
+			margin: 0 0 8px;
+			display: flex;
+			align-items: center;
+			border: 1px solid var(--maxi-secondary-color);
+			z-index: 0;
+		}
+
+		&__content {
+			border: 1px solid var(--maxi-secondary-color);
+			border-radius: 0;
+			padding: 22px 8px 0;
+			margin: -23px -8px 8px;
+
+			.chrome-picker {
+				width: 100% !important;
+			}
+
+			.maxi-library-modal__action-section {
+				margin-bottom: 8px;
+			}
+
+			.components-custom-gradient-picker__gradient-bar {
+				margin-top: 0;
+				margin-bottom: 8px;
+			}
+
+			.components-custom-gradient-picker__ui-line {
+				margin-bottom: 0;
+			}
+		}
+
+		&__title {
+			&__text {
+				line-height: 25px;
+			}
+			&__mover {
+				display: block;
+				width: 17px;
+				height: 17px;
+				margin: auto 0 auto auto;
+				cursor: move;
+
+				svg {
+					width: 17px;
+					height: 17px;
+					path {
+						fill: #000;
+					}
+				}
+			}
+			&__display {
+				display: block;
+				width: 22px;
+				height: 22px;
+				margin: auto 7px auto 5px;
+				cursor: pointer;
+				position: relative;
+
+				svg {
+					width: 22px;
+					height: 22px;
+				}
+
+				&--block {
+					path {
+						stroke: var(--maxi-black-1-color);
+					}
+				}
+				&:after {
+					content: '';
+					display: block;
+					background-color: var(--maxi-grey-10-color);
+					width: 0;
+					height: 1px;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%) rotate(-45deg);
+					transition: 0.3s;
+				}
+				&--none {
+					&:after {
+						width: 23px;
+					}
+					path {
+						stroke: var(--maxi-grey-10-color);
+					}
+				}
+			}
+		}
+	}
+}
