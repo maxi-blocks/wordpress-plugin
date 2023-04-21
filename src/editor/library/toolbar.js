@@ -70,12 +70,12 @@ const LibraryToolbar = props => {
 	const client = new TypesenseSearchClient({
 		nodes: [
 			{
-				host: '##################.typesense.net',
+				host: '################.typesense.net',
 				port: '443',
 				protocol: 'https',
 			},
 		],
-		apiKey: '##############################',
+		apiKey: '#################################',
 		connectionTimeoutSeconds: 2,
 	});
 

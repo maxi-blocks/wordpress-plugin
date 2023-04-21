@@ -20,6 +20,8 @@ const save = props => {
 	return (
 		<MaxiBlock.save
 			{...getMaxiBlockAttributes({ ...props, name })}
+			// https://github.com/yeahcan/maxi-blocks/issues/3555 sometimes causes validation error,
+			// remove next line once it is fixed.
 			className='wp-block-maxi-blocks-pane-maxi'
 			data-accordion={accordionUniqueId}
 			aria-expanded={false}

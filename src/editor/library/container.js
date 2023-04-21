@@ -444,7 +444,7 @@ const LibraryContainer = props => {
 	const typesenseInstantsearchAdapter = params => {
 		return new TypesenseInstantSearchAdapter({
 			server: {
-				apiKey: '#####################################', // Be sure to use an API key that only allows search operations
+				apiKey: '###########################', // Be sure to use an API key that only allows search operations
 				nodes: [
 					{
 						host: '#####################.typesense.net',
@@ -705,7 +705,7 @@ const LibraryContainer = props => {
 			if (type === 'accordion-icon-active') {
 				onSelect({
 					'active-icon-content': svgCode,
-					svgTypeActive: svgType,
+					'active-svgType': svgType,
 				});
 
 				onRequestClose();

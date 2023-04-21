@@ -139,7 +139,12 @@ if (!class_exists('MaxiBlocks_API')):
                 'methods' => 'POST',
                 'callback' => [$this, 'post_maxi_blocks_sc_string'],
                 'args' => [
-                    'meta' => [
+                    'sc_variables' => [
+                        'validate_callback' => function ($param) {
+                            return is_string($param);
+                        },
+                    ],
+                    'sc_styles' => [
                         'validate_callback' => function ($param) {
                             return is_string($param);
                         },
@@ -341,25 +346,27 @@ if (!class_exists('MaxiBlocks_API')):
         /**
          * Post the styles
          */
-        public function post_maxi_blocks_styles($data)
+        public function post_maxi_blocks_styles($data, $is_json = true)
         {
             global $wpdb;
 
             $id = $data['id'];
-            $meta = json_decode($data['meta'], true);
+            $meta = $is_json ? json_decode($data['meta'], true) : $data['meta'];
             $styles = $meta['styles'];
             $is_template = $data['isTemplate'];
             $template_parts = $data['templateParts'];
 
             $fonts_arr = $meta['fonts'];
-            foreach ($fonts_arr as $key => $font) {
-                $fonts_arr[$key] = json_decode($font, true);
+            if ($is_json) {
+                foreach ($fonts_arr as $key => $font) {
+                    $fonts_arr[$key] = json_decode($font, true);
+                }
             }
             $fonts = json_encode(array_merge_recursive(...$fonts_arr));
 
             ['table' => $table, 'id_key' => $id_key, 'where_clause' => $where_clause] = $this->get_query_params('maxi_blocks_styles', $is_template);
 
-            if (empty($styles) || $styles === '{}') {
+            if ((empty($styles) || $styles === '{}') && !$is_template) {
                 $wpdb->query($wpdb->prepare("DELETE FROM $table WHERE $where_clause", $id));
                 return '{}';
             }
@@ -433,14 +440,16 @@ if (!class_exists('MaxiBlocks_API')):
                 }
             }
 
-            if ((bool) get_option('local_fonts')) {
+            // Temporary disable local fonts
+            // if ((bool) get_option('local_fonts')) {
+            if (false) {
                 new MaxiBlocks_Local_Fonts();
             }
 
             // Check if Maxi Blocks Theme is installed and active
             if (get_template() === 'maxi-theme') {
                 $template_part = $data['templatePart'];
-                $is_template_part = strpos($template_part, 'maxi-theme//') !== false;
+                $is_template_part = isset($template_part) && strpos($template_part, 'maxi-theme//') !== false;
 
                 if ($is_template_part || $is_template) {
                     $template_name;
@@ -509,15 +518,25 @@ if (!class_exists('MaxiBlocks_API')):
 
             if ($data['update']) {
                 $new_style_card = [
-                            '_maxi_blocks_style_card' => $data['meta'],
-                            '_maxi_blocks_style_card_preview' => $data['meta'],
+                            '_maxi_blocks_style_card' => $data['sc_variables'],
+                            '_maxi_blocks_style_card_preview' => $data['sc_variables'],
+                            '_maxi_blocks_style_card_styles' => $data['sc_styles'],
+                            '_maxi_blocks_style_card_styles_preview' => $data['sc_styles'],
                         ];
             } else {
-                $new_style_card['_maxi_blocks_style_card_preview'] = $data['meta'];
+                $new_style_card['_maxi_blocks_style_card_preview'] = $data['sc_variables'];
+                $new_style_card['_maxi_blocks_style_card_styles_preview'] = $data['sc_styles'];
+
                 if ($style_card !== '' && array_key_exists('_maxi_blocks_style_card', $style_card)) {
                     $new_style_card['_maxi_blocks_style_card'] = $style_card['_maxi_blocks_style_card'];
+                    if(array_key_exists('_maxi_blocks_style_card_styles', $style_card)) {
+                        $new_style_card['_maxi_blocks_style_card_styles'] = $style_card['_maxi_blocks_style_card_styles'];
+                    }
                 } else {
-                    $new_style_card['_maxi_blocks_style_card'] = $data['meta'];
+                    $new_style_card['_maxi_blocks_style_card'] = $data['sc_variables'];
+                    if (array_key_exists('sc_styles', $data)) {
+                        $new_style_card['_maxi_blocks_style_card_styles'] = $data['sc_styles'];
+                    }
                 }
             }
 
@@ -596,7 +615,7 @@ if (!class_exists('MaxiBlocks_API')):
                 return $style_cards;
             } else {
                 if (class_exists('MaxiBlocks_StyleCards')) {
-                    $default_style_card = MaxiBlocks_StyleCards::getDefaultStyleCard();
+                    $default_style_card = MaxiBlocks_StyleCards::get_default_style_card();
                 } else {
                     return false;
                 } // Should return an error
@@ -622,7 +641,7 @@ if (!class_exists('MaxiBlocks_API')):
             $table_name = $wpdb->prefix . 'maxi_blocks_general'; // table name
 
             if (class_exists('MaxiBlocks_StyleCards')) {
-                $default_style_card = MaxiBlocks_StyleCards::getDefaultStyleCard();
+                $default_style_card = MaxiBlocks_StyleCards::get_default_style_card();
             } else {
                 return false;
             } // Should return an error
@@ -672,7 +691,7 @@ if (!class_exists('MaxiBlocks_API')):
             return $response;
         }
 
-        public function set_maxi_blocks_current_custom_data($data)
+        public function set_maxi_blocks_current_custom_data($data, $is_json = true)
         {
             global $wpdb;
 
@@ -704,8 +723,12 @@ if (!class_exists('MaxiBlocks_API')):
             );
 
             if ($update) {
-                $array_new_data = json_decode($data_val, true);
-                $new_custom_data = serialize(array_merge_recursive(...array_values($array_new_data)));
+                if($is_json) {
+                    $array_new_data = $is_json ? json_decode($data_val, true) : $data_val;
+                    $new_custom_data = serialize(array_merge_recursive(...array_values($array_new_data)));
+                } else {
+                    $new_custom_data = $data_val;
+                }
 
                 $wpdb->update("{$styles_table}", array(
                     'prev_active_custom_data' =>  1,
