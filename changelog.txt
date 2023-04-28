@@ -1,3 +1,18 @@
+_Updates: 28 April 2023_
+
+* Enable pro library sign up, sign in and downloads
+* Fix style card variables and styles for Button Maxi
+* Add template support for child themes
+* Fix infinite scroll in template library (below 768 height)
+* Remove text 'tone' from light and dark filters
+* Navigation fixes in FSE Full site editing
+* Fix block previews in list view (document view)
+* Implement Maxi Preview HOC
+* Fix error on loading styles
+* Fix font-family with spaces
+* Fix PHP issues
+
+
 _Updates: 21 April 2023_
 
 - Remove drop tables on uninstall
