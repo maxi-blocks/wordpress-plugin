@@ -444,10 +444,10 @@ const LibraryContainer = props => {
 	const typesenseInstantsearchAdapter = params => {
 		return new TypesenseInstantSearchAdapter({
 			server: {
-				apiKey: '###########################', // Be sure to use an API key that only allows search operations
+				apiKey: '############################', // Be sure to use an API key that only allows search operations
 				nodes: [
 					{
-						host: '#####################.typesense.net',
+						host: '#####################.a1.typesense.net',
 						port: '443',
 						protocol: 'https',
 					},
@@ -1097,17 +1097,6 @@ const LibraryContainer = props => {
 									return itemsReturn;
 								}}
 							/>
-							{!isMaxiProActive && (
-								<Button
-									type='button'
-									label='Go Pro'
-									className='maxi-cloud-container__patterns__top-menu__button-go-pro'
-									href='https://maxiblocks.com/go/pro-library'
-									target='_blank'
-								>
-									{__('Go Pro', 'maxi-blocks')}
-								</Button>
-							)}
 						</div>
 						<div className='maxi-cloud-container__patterns__sidebar'>
 							<CustomMenuSelect
@@ -1123,11 +1112,11 @@ const LibraryContainer = props => {
 											item => item.label === name
 										);
 										if (item) {
-											item.label = `${name} tone`;
+											item.label = name;
 											return item;
 										}
 										return {
-											label: `${name} tone`,
+											label: name,
 											value: name,
 											count: 0,
 											isRefined: false,

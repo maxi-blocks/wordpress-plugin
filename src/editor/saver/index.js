@@ -1,7 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { useDispatch, useSelect, dispatch, select } from '@wordpress/data';
+import {
+	useDispatch,
+	useSelect,
+	dispatch,
+	select,
+	subscribe,
+} from '@wordpress/data';
 import {
 	useEffect,
 	render,
@@ -18,36 +24,42 @@ import { getPageFonts, loadFonts } from '../../extensions/text/fonts';
  * Component
  */
 const BlockStylesSaver = () => {
-	const { isSaving, isPreviewing, isDraft, isCodeEditor } = useSelect(
-		select => {
-			const { isSavingPost, isPreviewingPost, getCurrentPostAttribute } =
-				select('core/editor');
-			const {
-				__experimentalGetDirtyEntityRecords,
-				isSavingEntityRecord,
-			} = select('core');
-			const { getEditorMode } =
-				select('core/edit-site') || select('core/edit-post');
+	const {
+		isSaving,
+		isPreviewing,
+		isDraft,
+		isCodeEditor,
+		allStylesAreSaved = true,
+	} = useSelect(select => {
+		const { isSavingPost, isPreviewingPost, getCurrentPostAttribute } =
+			select('core/editor');
+		const { __experimentalGetDirtyEntityRecords, isSavingEntityRecord } =
+			select('core');
+		const { getEditorMode } =
+			select('core/edit-site') || select('core/edit-post');
+		const { getAllStylesAreSaved } = select('maxiBlocks/styles');
 
-			const dirtyEntityRecords = __experimentalGetDirtyEntityRecords();
+		const dirtyEntityRecords = __experimentalGetDirtyEntityRecords();
 
-			const isSaving =
-				isSavingPost() ||
-				dirtyEntityRecords.some(record =>
-					isSavingEntityRecord(record.kind, record.name, record.key)
-				);
-			const isPreviewing = isPreviewingPost();
-			const isDraft = getCurrentPostAttribute('status') === 'draft';
-			const isCodeEditor = getEditorMode() === 'text';
+		const isSaving =
+			isSavingPost() ||
+			dirtyEntityRecords.some(record =>
+				isSavingEntityRecord(record.kind, record.name, record.key)
+			);
+		const isPreviewing = isPreviewingPost();
+		const isDraft = getCurrentPostAttribute('status') === 'draft';
+		const isCodeEditor = getEditorMode() === 'text';
+		// const allStylesAreSaved = getAllStylesAreSaved();
+		const allStylesAreSaved = true;
 
-			return {
-				isSaving,
-				isPreviewing,
-				isDraft,
-				isCodeEditor,
-			};
-		}
-	);
+		return {
+			isSaving,
+			isPreviewing,
+			isDraft,
+			isCodeEditor,
+			allStylesAreSaved,
+		};
+	});
 
 	const { saveStyles } = useDispatch('maxiBlocks/styles');
 	const { saveCustomData } = useDispatch('maxiBlocks/customData');
@@ -96,6 +108,54 @@ const BlockStylesSaver = () => {
 			}, 1000);
 		}
 	}, []);
+
+	useEffect(() => {
+		if (!allStylesAreSaved) {
+			const forbidUpdateUnsubscribe = subscribe(() => {
+				const publishButton = document.querySelector(
+					'.editor-post-publish-button'
+				);
+
+				if (publishButton)
+					publishButton.setAttribute('aria-disabled', 'true');
+
+				const saveDraftButton = document.querySelector(
+					'.editor-post-save-draft'
+				);
+
+				if (saveDraftButton)
+					saveDraftButton.setAttribute('aria-disabled', 'true');
+
+				const previewButton = document.querySelector(
+					'.editor-post-preview'
+				);
+
+				if (previewButton)
+					previewButton.setAttribute('aria-disabled', 'true');
+			});
+
+			return () => forbidUpdateUnsubscribe();
+		}
+
+		const publishButton = document.querySelector(
+			'.editor-post-publish-button'
+		);
+
+		if (publishButton) publishButton.setAttribute('aria-disabled', 'false');
+
+		const saveDraftButton = document.querySelector(
+			'.editor-post-save-draft'
+		);
+
+		if (saveDraftButton)
+			saveDraftButton.setAttribute('aria-disabled', 'false');
+
+		const previewButton = document.querySelector('.editor-post-preview');
+
+		if (previewButton) previewButton.setAttribute('aria-disabled', 'false');
+
+		return () => {};
+	}, [allStylesAreSaved]);
 
 	return null;
 };
