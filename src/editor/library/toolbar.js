@@ -19,7 +19,7 @@ import {
 } from '../../icons';
 import onRequestInsertPattern from './utils/onRequestInsertPattern';
 import { Button, TextControl } from '../../components';
-import { isValidEmail } from '../auth';
+import { isValidEmail, getSessionsCount } from '../auth';
 
 /**
  * External dependencies
@@ -77,12 +77,12 @@ const LibraryToolbar = props => {
 	const client = new TypesenseSearchClient({
 		nodes: [
 			{
-				host: '###################.a1.typesense.net',
+				host: '##################.typesense.net',
 				port: '443',
 				protocol: 'https',
 			},
 		],
-		apiKey: '##################################',
+		apiKey: '###############################',
 		connectionTimeoutSeconds: 2,
 	});
 
@@ -399,7 +399,7 @@ const LibraryToolbar = props => {
 	);
 
 	const manageSessions = () => {
-		const url = 'https://##################################';
+		const url = 'https://my.maxiblocks.com/manage-sessions?plugin-sessions';
 		window.open(url, '_blank')?.focus();
 	};
 
@@ -493,10 +493,22 @@ const LibraryToolbar = props => {
 						<span className={usernameClasses}>{userName}</span>
 					</h5>
 					<Button
+						key='maxi-cloud-toolbar__button__manage-sessions'
+						className='maxi-cloud-container__patterns__top-menu__button-go-pro maxi-cloud-container__patterns__top-menu__button-manage-sessions'
+						label={__('Manage sessions', 'maxi-blocks')}
+						onClick={() => manageSessions()}
+					>
+						{__('Manage sessions', 'maxi-blocks')}{' '}
+						{getSessionsCount()}/5
+					</Button>
+					<Button
 						key='maxi-cloud-toolbar__button__sing-out'
 						className='maxi-cloud-container__patterns__top-menu__button-go-pro'
 						label={__('Sign out', 'maxi-blocks')}
-						onClick={onLogOut}
+						onClick={() => {
+							onLogOut(true);
+							onLogOut();
+						}}
 					>
 						{__('Sign out', 'maxi-blocks')}
 					</Button>
@@ -513,16 +525,15 @@ const LibraryToolbar = props => {
 			{!isMaxiProActive && userName && !isMaxiProExpired && (
 				<div className='maxi-cloud-toolbar__sign-in'>
 					<h5 className='maxi-cloud-container__patterns__top-menu__text_pro'>
-						{__('Already signed in: ', 'maxi-blocks')}
 						<span className={usernameClasses}>{userName}</span>
 					</h5>
 					<Button
 						key='maxi-cloud-toolbar__button__manage-sessions'
 						className='maxi-cloud-container__patterns__top-menu__button-go-pro maxi-cloud-container__patterns__top-menu__button-manage-sessions'
-						label={__('Manage sessions', 'maxi-blocks')}
+						label={__('Maximum sessions 5/5', 'maxi-blocks')}
 						onClick={() => manageSessions()}
 					>
-						{__('Manage sessions', 'maxi-blocks')}
+						{__('Maximum sessions 5/5', 'maxi-blocks')}
 					</Button>
 					<Button
 						key='maxi-cloud-toolbar__button__sing-out'
@@ -553,14 +564,11 @@ const LibraryToolbar = props => {
 						className='maxi-cloud-container__patterns__top-menu__button-connect-pro'
 						label={__('Sign in', 'maxi-blocks')}
 						onClick={() => {
+							const url =
+								'https://my.maxiblocks.com/login?plugin';
+							window.open(url, '_blank')?.focus();
+
 							onClickConnect(userEmail);
-							// MVP
-							setTimeout(() => {
-								const button = document.querySelector(
-									'.components-button.maxi-cloud-container__patterns__top-menu__button-connect-pro'
-								);
-								button?.click();
-							}, '100');
 						}}
 					>
 						{__('Sign in', 'maxi-blocks')}
@@ -587,7 +595,7 @@ const LibraryToolbar = props => {
 			)}
 			{(type === 'preview' || type === 'switch-tone') && (
 				<div className='maxi-cloud-toolbar__buttons-group_close'>
-					{(isBeta || (isMaxiProActive && userName)) && (
+					{(!isPro || isBeta || (isMaxiProActive && userName)) && (
 						<ToolbarButton
 							label={__('Insert', 'maxi-blocks')}
 							onClick={async () => {

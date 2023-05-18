@@ -5,7 +5,7 @@
 import { __ } from '@wordpress/i18n';
 import { useDispatch, select, useSelect } from '@wordpress/data';
 import { useEffect, useState } from '@wordpress/element';
-import { CheckboxControl, Button } from '@wordpress/components';
+import { CheckboxControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -444,10 +444,10 @@ const LibraryContainer = props => {
 	const typesenseInstantsearchAdapter = params => {
 		return new TypesenseInstantSearchAdapter({
 			server: {
-				apiKey: '############################', // Be sure to use an API key that only allows search operations
+				apiKey: '#################################', // Be sure to use an API key that only allows search operations
 				nodes: [
 					{
-						host: '#####################.a1.typesense.net',
+						host: '#####################.typesense.net',
 						port: '443',
 						protocol: 'https',
 					},

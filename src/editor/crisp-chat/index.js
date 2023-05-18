@@ -26,7 +26,7 @@ const CrispChat = ({ className, as: As = Button, children }) => {
 	};
 
 	useEffect(() => {
-		Crisp.configure('##################################');
+		Crisp.configure('###########################');
 
 		if (!window.$crisp?.is) Crisp.chat.hide();
 	}, []);

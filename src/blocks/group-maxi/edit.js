@@ -8,6 +8,7 @@ import { MaxiBlock, getMaxiBlockAttributes } from '../../components/maxi-block';
 import { getGroupAttributes } from '../../extensions/styles';
 import getStyles from './styles';
 import { copyPasteMapping } from './data';
+import { withMaxiContextLoop } from '../../extensions/DC';
 
 /**
  * Edit
@@ -34,6 +35,7 @@ class edit extends MaxiBlockComponent {
 						'maxi-blocks/column-maxi',
 						'maxi-blocks/pane-maxi',
 						'maxi-blocks/maxi-cloud',
+						'maxi-blocks/slide-maxi',
 					].indexOf(blockName) === -1
 			);
 
@@ -72,4 +74,4 @@ class edit extends MaxiBlockComponent {
 	}
 }
 
-export default withMaxiProps(edit);
+export default withMaxiContextLoop(withMaxiProps(edit));
