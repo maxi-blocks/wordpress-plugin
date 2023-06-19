@@ -1,3 +1,22 @@
+_Updates: 19 June 2023_
+
+* Update: Advanced Custom Fields integration into Dynamic content
+* Update: Add % to min and max height settings for all Maxi blocks
+* Update: Add options for Number Counter to align the percentage sign
+* Update: Remove redundant init.php file and /src folder
+* Update: Remove "Custom CSS (for that page only)" meta box from the page sidebar
+* Update: Remove that  'unset' option in flex settings that was the same as the default option
+* Update: Add https / http for external links
+* Update: Custom date for Dynamic content  - removed extended options that were not working
+* Fix: Row dropping Full size option in some cases
+* Fix: Links for Text Block
+* Fix: Post ID reset for Dynamic content
+* Fix: Z-index for Icon Block background
+* Fix: Breadcrumbs visibility for Text Block
+* Fix: Disallowed new background layer on hover
+* Fix: Popover position for tablet and mobile preview
+* Fix: UI for long labels in Dynamic content
+
 _Updates: 16 May 2023_
 
 * Update: Option to serve the Google Fonts files locally
