@@ -1,3 +1,42 @@
+_Updates: 7 August 2023_
+
+* Update: WordPress 6.3 compatibility
+* Update: Option to affect default Gutenberg blocks with Maxi Blocks Style cards
+* Update: Link icon added in the toolbar for Interaction builder
+* Update: Disabled list modified when Dynamic content enabled
+* Update: Marker size adjusted for responsive displays
+* Update: Image wrapper height changed from inherit to 100%
+* Update: Canvas label added for text block in Interaction builder
+* Update: New features for Dynamic content and Content loop developed, adding relations by category, author, and tag
+* Update: Marker size migrator implemented
+* Update: Consistent Dynamic content random content on the editor ensured
+* Update: Accordion Custom CSS improved
+* Update: Hide settings in Style card editor until they are available for changing
+* Update: Interaction builder implemented for background layers
+* Update: Dependencies, including tough-cookie and word-wrap versions, updated
+* Update: Styles consistency ensured on page reload
+* Update: Typography colours adjusted for responsive displays
+* Update: Links in higher blocks disabled when tags/categories links are enabled
+* Update: Dynamic content link provided for context loop blocks
+* Update: Interaction builder background transitions implemented
+* Update: Hover colour added for the search close icon
+* Update: Text strings allowed in number inputs
+* Update: Repeater functionality implemented
+* Fix: Issue with tags and categories links on the editor addressed
+* Fix: Styles on Gutenberg's responsive preview improved
+* Fix: Issue where the background layers disappeared on special paste addressed
+* Fix: Interaction builder reset issue resolved
+* Fix: PHP warning on the frontend resolved
+* Fix: Interaction builder unit bugs resolved
+* Fix: Bug with big marker size resolved
+* Fix: Temporary overlap of number attributes fixed
+* Fix: Visited links colour for custom formats fixed
+* Fix: Toolbar indent/outdent functionality fixed
+* Fix: Background gradient opacity reset issue addressed
+* Fix: Container indicators fixed
+* Fix: Issues with 'custom data' on Site editor
+* Fix: Default Style cards font-family for Button Maxi
+
 _Updates: 19 June 2023_
 
 * Update: Advanced Custom Fields integration into Dynamic content
