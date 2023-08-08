@@ -77,12 +77,12 @@ const LibraryToolbar = props => {
 	const client = new TypesenseSearchClient({
 		nodes: [
 			{
-				host: '##################.typesense.net',
+				host: '#############################################',
 				port: '443',
 				protocol: 'https',
 			},
 		],
-		apiKey: '###############################',
+		apiKey: '#############################################',
 		connectionTimeoutSeconds: 2,
 	});
 
@@ -399,7 +399,7 @@ const LibraryToolbar = props => {
 	);
 
 	const manageSessions = () => {
-		const url = 'https://my.maxiblocks.com/manage-sessions?plugin-sessions';
+		const url = '#############################################';
 		window.open(url, '_blank')?.focus();
 	};
 
@@ -565,7 +565,7 @@ const LibraryToolbar = props => {
 						label={__('Sign in', 'maxi-blocks')}
 						onClick={() => {
 							const url =
-								'https://my.maxiblocks.com/login?plugin';
+								'#############################################';
 							window.open(url, '_blank')?.focus();
 
 							onClickConnect(userEmail);

@@ -20,7 +20,7 @@ _Updates: 7 August 2023_
 * Update: Dynamic content link provided for context loop blocks
 * Update: Interaction builder background transitions implemented
 * Update: Hover colour added for the search close icon
-* Update: Text strings allowed in number inputs
+* Update: Text strings disallowed in number inputs
 * Update: Repeater functionality implemented
 * Fix: Issue with tags and categories links on the editor addressed
 * Fix: Styles on Gutenberg's responsive preview improved

@@ -444,10 +444,10 @@ const LibraryContainer = props => {
 	const typesenseInstantsearchAdapter = params => {
 		return new TypesenseInstantSearchAdapter({
 			server: {
-				apiKey: '#################################', // Be sure to use an API key that only allows search operations
+				apiKey: '#############################################', // Be sure to use an API key that only allows search operations
 				nodes: [
 					{
-						host: '#####################.typesense.net',
+						host: '#############################################',
 						port: '443',
 						protocol: 'https',
 					},
@@ -748,7 +748,8 @@ const LibraryContainer = props => {
 
 		const newAllSCs = {
 			...styleCards,
-			[newId]: parsedCard,
+			// gutenberg_blocks_status: true should be true by default
+			[newId]: { ...parsedCard, gutenberg_blocks_status: true },
 		};
 
 		saveMaxiStyleCards(newAllSCs);

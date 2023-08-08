@@ -562,11 +562,15 @@ class MaxiBlocks_Styles
                     }
 
                     foreach ($font_weights as $font_weight) {
-                        if(!is_array($font_weight)) {
-                            $font_weight = [ $font_weight ];
+                        if(!$font_weight) {
+                            continue;
                         }
 
                         foreach ($font_styles as $font_style) {
+                            if(!is_array($font_weight)) {
+                                $font_weight = [ $font_weight ];
+                            }
+
                             $already_loaded = false;
 
                             if (in_array(
@@ -704,8 +708,8 @@ class MaxiBlocks_Styles
 
         $result_decoded = $result[$metaJs];
 
-        // TODO: This is a temporary solution to fix the issue with the bg_video and scroll_effects meta
-        if (in_array($metaJs, ['bg_video', 'scroll_effects'])) {
+        // TODO: This is a temporary solution to fix the issue with the bg_video, scroll_effects and slider meta
+        if (in_array($metaJs, ['bg_video', 'scroll_effects', 'slider'])) {
             return [ true ];
         }
 

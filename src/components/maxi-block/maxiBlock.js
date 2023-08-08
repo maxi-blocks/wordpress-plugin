@@ -4,11 +4,11 @@
  */
 import {
 	forwardRef,
-	useEffect,
-	useState,
 	memo,
 	useCallback,
+	useEffect,
 	useReducer,
+	useState,
 } from '@wordpress/element';
 import { dispatch, select } from '@wordpress/data';
 
@@ -112,6 +112,7 @@ const MaxiBlockContent = forwardRef((props, ref) => {
 		hasLink,
 		useInnerBlocks = false,
 		hasInnerBlocks = false,
+		isRepeater,
 		isSelected,
 		hasSelectedChild,
 		isHovered,
@@ -122,39 +123,43 @@ const MaxiBlockContent = forwardRef((props, ref) => {
 	// To forbid the use of links for container blocks from having links when their child has one
 	if (!isSave && useInnerBlocks && hasLink) {
 		let childHasLink = false;
-		const children = select('core/block-editor').getClientIdsOfDescendants([
-			clientId,
-		]);
+		const childrenClientIds = select(
+			'core/block-editor'
+		).getClientIdsOfDescendants([clientId]);
 
-		for (const child of children) {
+		for (const childClientId of childrenClientIds) {
 			const attributes =
-				select('core/block-editor').getBlockAttributes(child);
+				select('core/block-editor').getBlockAttributes(childClientId);
 
 			if (
 				!isEmpty(attributes.linkSettings?.url) ||
-				(select('core/block-editor').getBlockName(child) ===
+				(select('core/block-editor').getBlockName(childClientId) ===
 					'maxi-blocks/text-maxi' &&
-					attributes.content.includes('<a '))
+					(attributes.content.includes('<a ') ||
+						attributes['dc-content']?.includes('<a ')))
 			) {
 				childHasLink = true;
 				break;
 			}
 		}
-		if (childHasLink) {
-			dispatch('core/block-editor').updateBlockAttributes(clientId, {
-				linkSettings: {
-					...extraProps.attributes.linkSettings,
-					disabled: true,
-				},
-			});
-		} else if (extraProps.attributes.linkSettings.disabled) {
-			dispatch('core/block-editor').updateBlockAttributes(clientId, {
-				linkSettings: {
-					...extraProps.attributes.linkSettings,
-					disabled: false,
-				},
-			});
-		}
+		const attributes = extraProps?.attributes || {};
+		setTimeout(() => {
+			if (childHasLink) {
+				dispatch('core/block-editor').updateBlockAttributes(clientId, {
+					linkSettings: {
+						...attributes?.linkSettings,
+						disabled: true,
+					},
+				});
+			} else if (attributes?.linkSettings.disabled) {
+				dispatch('core/block-editor').updateBlockAttributes(clientId, {
+					linkSettings: {
+						...attributes.linkSettings,
+						disabled: false,
+					},
+				});
+			}
+		}, 10);
 	}
 
 	// Gets if the block is full-width
@@ -234,6 +239,7 @@ const MaxiBlockContent = forwardRef((props, ref) => {
 		hasLink && 'maxi-block--has-link',
 		isDragging && isDragOverBlock && 'maxi-block--is-drag-over',
 		isHovered && 'maxi-block--is-hovered',
+		isRepeater && 'maxi-block--repeater',
 		isDisabled && 'maxi-block--disabled',
 		!isSave && isFullWidth && 'maxi-block--full-width'
 	);
@@ -377,6 +383,8 @@ const MaxiBlock = memo(
 
 		// Check differences between children
 		if (rawOldProps?.children || rawNewProps?.children) {
+			// TODO: check this part of the code, seems is always returning false,
+			// so the block is always re-rendering
 			const areChildrenEqual = isEqual(
 				rawOldProps.children,
 				rawNewProps.children
