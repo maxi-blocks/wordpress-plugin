@@ -8,7 +8,7 @@ import { select, dispatch } from '@wordpress/data';
 export const getMaxiCookieKey = () => {
 	const cookie = document.cookie
 		.split(';')
-		.find(row => row.startsWith('#########='))
+		.find(row => row.startsWith('################='))
 		?.split('=')[1];
 
 	if (!cookie) return false;
@@ -29,11 +29,11 @@ export const getPathToAdmin = () => {
 export const removeMaxiCookie = () => {
 	const cookie = document.cookie
 		.split(';')
-		.find(row => row.startsWith('#########='))
+		.find(row => row.startsWith('#############='))
 		?.split('=')[1];
 
 	if (cookie) {
-		document.cookie = `#########=${cookie};max-age=0; Path=${getPathToAdmin()};Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+		document.cookie = `################=${cookie};max-age=0; Path=${getPathToAdmin()};Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 	}
 };
 
@@ -211,11 +211,11 @@ export const removeLocalActivation = email => {
 };
 
 export async function authConnect(withRedirect = false, email = false) {
-	const url = '#############################################';
+	const url = 'https://my.maxiblocks.com/login?plugin';
 
 	let cookieKey = document.cookie
 		.split(';')
-		.find(row => row.startsWith('#########='))
+		.find(row => row.startsWith('############='))
 		?.split('=')[1];
 
 	if (!cookieKey && !email) return;
@@ -246,7 +246,7 @@ export async function authConnect(withRedirect = false, email = false) {
 			return JSON.stringify(obj);
 		};
 		cookieKey = generateCookieKey(email, 20);
-		document.cookie = `#############################################=${cookieKey};max-age=2592000;Path=${getPathToAdmin()};`;
+		document.cookie = `##############=${cookieKey};max-age=2592000;Path=${getPathToAdmin()};`;
 	}
 
 	const redirect = () => {
@@ -266,13 +266,13 @@ export async function authConnect(withRedirect = false, email = false) {
 	const useEmail = email;
 
 	if (useEmail) {
-		const fetchUrl = '#############################################';
+		const fetchUrl = 'https://################################';
 
 		const fetchOptions = {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				'#####################': '#############################################',
+				'################': '######################',
 			},
 			body: JSON.stringify({ email: useEmail, cookie: key }),
 		};
@@ -360,7 +360,7 @@ export const logOut = redirect => {
 	processLocalActivationRemoveDevice(email, name, 'no', key, count);
 	removeMaxiCookie();
 	if (redirect) {
-		const url = '#############################################';
+		const url = 'https://my.maxiblocks.com/log-out?plugin';
 		window.open(url, '_blank')?.focus();
 	}
 };
