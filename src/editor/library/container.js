@@ -87,7 +87,7 @@ const LoadingContent = () => (
 			width: '100%',
 		}}
 	>
-		<ContentLoader />
+		<ContentLoader cloud />
 	</div>
 );
 
@@ -444,10 +444,10 @@ const LibraryContainer = props => {
 	const typesenseInstantsearchAdapter = params => {
 		return new TypesenseInstantSearchAdapter({
 			server: {
-				apiKey: '###################################3', // Be sure to use an API key that only allows search operations
+				apiKey: '##################################', // Be sure to use an API key that only allows search operations
 				nodes: [
 					{
-						host: '##################.typesense.net',
+						host: '#################.typesense.net',
 						port: '443',
 						protocol: 'https',
 					},
