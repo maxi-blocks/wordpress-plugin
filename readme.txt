@@ -274,7 +274,8 @@ Update: Integrated PHP for block and attribute registration
 Update: Enhanced code optimization and general performance
 Update: Plugin's user interface for a better user experience
 Update: Maxi blocks are now compatible with Synced Patterns (formerly Reusable Blocks)
-Update: Strengthened support for Site EditorUpdate: Refined error handling for Dynamic Content
+Update: Strengthened support for Site Editor
+Update: Refined error handling for Dynamic Content
 Update: Introduced a new loading animation for the Template Library Maxi block
 Update: UI enhancements for margin and padding settings
 Update: Introduced a new Context Loop icon
